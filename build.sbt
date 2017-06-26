@@ -11,6 +11,7 @@ lazy val alpakka = project
              ftp,
              geode,
              googleCloudPubSub,
+             googleCloudStorage,
              hbase,
              ironmq,
              jms,
@@ -117,6 +118,14 @@ lazy val googleCloudPubSub = project
     fork in Test := true,
     envVars in Test := Map("PUBSUB_EMULATOR_HOST" -> "localhost:8538")
   )
+
+  lazy val googleCloudStorage = project
+    .in(file("google-cloud-storage"))
+    .enablePlugins(AutomateHeaderPlugin)
+    .settings(
+      name := "akka-stream-alpakka-google-cloud-storage",
+      Dependencies.GoogleCloudStorage
+    )
 
 lazy val hbase = project
   .enablePlugins(AutomateHeaderPlugin)
